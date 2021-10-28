@@ -3,6 +3,8 @@ from django.contrib.auth.models import User
 
 
 class Reservation(models.Model):
+    """Reservation model."""
+
     client= models.ForeignKey(User, on_delete=models.CASCADE, null=True)
     date_from=models.DateField()
     date_to=models.DateField()
@@ -14,6 +16,8 @@ class Reservation(models.Model):
 
 
 class Room(models.Model):
+    """Room model."""
+
     standard_list = (('podstawowy','podstawowy'),
                       ('sredni', 'sredni')
                       ('wyzszy','wyzszy'),
@@ -32,6 +36,8 @@ class Room(models.Model):
         verbose_name_plural = "Pokoje"
 
 class AdditionalService:
+    """AccountsUser model model."""
+
     description = models.CharField(max_length=255, blank=True)
     service_name = models.CharField(max_length=20)
 
@@ -44,11 +50,13 @@ class AdditionalService:
 
 
 class Order:
+    """Order model."""
+
     add_service=models.ForeignKey(AdditionalService, on_delete=models.CASCADE())
     amount=models.IntegerField(max_length=20, null=True)
     client = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
     total_price=models.DecimalField(max_digits=10, decimal_places=2)
 
     class Meta:
-        verbose_name = "Zamowieni"
+        verbose_name = "Zamowienie"
         verbose_name_plural = "Zamowienia"
