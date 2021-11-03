@@ -3,9 +3,9 @@ DEBUG = True
 DATABASES = {
     'default':{
         'ENGINE':'django.db.backends.postgresql_psycopg2',
-        'NAME':'hoteldb',
-        'USER':'monikan',
-        'PASSWORD':'monika',
+        'NAME':'django',
+        'USER':'lukaszk',
+        'PASSWORD':'12345',
         'HOST':'localhost',
         'PORT':'',
     }
@@ -129,5 +129,3 @@ STATIC_URL = '/static/'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-
-
