@@ -15,58 +15,119 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.CreateModel(
-            name='AdditionalService',
+            name="AdditionalService",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('description', models.CharField(blank=True, max_length=255)),
-                ('service_name', models.CharField(max_length=20)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("description", models.CharField(blank=True, max_length=255)),
+                ("service_name", models.CharField(max_length=20)),
             ],
             options={
-                'verbose_name': 'Dodatkowa usluga',
-                'verbose_name_plural': 'Dodatkowe uslugi',
+                "verbose_name": "Dodatkowa usluga",
+                "verbose_name_plural": "Dodatkowe uslugi",
             },
         ),
         migrations.CreateModel(
-            name='Reservation',
+            name="Reservation",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('date_from', models.DateField()),
-                ('date_to', models.DateField()),
-                ('price', models.DecimalField(decimal_places=2, max_digits=10)),
-                ('client', models.ForeignKey(null=True, on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("date_from", models.DateField()),
+                ("date_to", models.DateField()),
+                ("price", models.DecimalField(decimal_places=2, max_digits=10)),
+                (
+                    "client",
+                    models.ForeignKey(
+                        null=True,
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to=settings.AUTH_USER_MODEL,
+                    ),
+                ),
             ],
             options={
-                'verbose_name': 'Rezerwacja',
-                'verbose_name_plural': 'Rezerwacje',
+                "verbose_name": "Rezerwacja",
+                "verbose_name_plural": "Rezerwacje",
             },
         ),
         migrations.CreateModel(
-            name='Room',
+            name="Room",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('price', models.DecimalField(decimal_places=2, max_digits=10)),
-                ('room_name', models.CharField(max_length=20)),
-                ('description', models.CharField(blank=True, max_length=255)),
-                ('standard', models.CharField(default='podstawowy', max_length=20)),
-                ('reservation', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='service.reservation')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("price", models.DecimalField(decimal_places=2, max_digits=10)),
+                ("room_name", models.CharField(max_length=20)),
+                ("description", models.CharField(blank=True, max_length=255)),
+                ("standard", models.CharField(default="podstawowy", max_length=20)),
+                (
+                    "reservation",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to="service.reservation",
+                    ),
+                ),
             ],
             options={
-                'verbose_name': 'Pokoj',
-                'verbose_name_plural': 'Pokoje',
+                "verbose_name": "Pokoj",
+                "verbose_name_plural": "Pokoje",
             },
         ),
         migrations.CreateModel(
-            name='Order',
+            name="Order",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('amount', models.DecimalField(decimal_places=2, max_digits=10, null=True)),
-                ('total_price', models.DecimalField(decimal_places=2, max_digits=10)),
-                ('add_service', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='service.additionalservice')),
-                ('client', models.ForeignKey(null=True, on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "amount",
+                    models.DecimalField(decimal_places=2, max_digits=10, null=True),
+                ),
+                ("total_price", models.DecimalField(decimal_places=2, max_digits=10)),
+                (
+                    "add_service",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to="service.additionalservice",
+                    ),
+                ),
+                (
+                    "client",
+                    models.ForeignKey(
+                        null=True,
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to=settings.AUTH_USER_MODEL,
+                    ),
+                ),
             ],
             options={
-                'verbose_name': 'Zamowienie',
-                'verbose_name_plural': 'Zamowienia',
+                "verbose_name": "Zamowienie",
+                "verbose_name_plural": "Zamowienia",
             },
         ),
     ]
