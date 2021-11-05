@@ -5,9 +5,12 @@ from . import views
 
 urlpatterns = [
     path("", views.api_overview, name="api-overview"),
-    path("room-list/", views.room_list, name="room-list"),
-    path("room-detail/<str:pk>/", views.room_detail, name="room-detail"),
-    path("room-create/", views.room_create, name="room-create"),
-    path("room-update/<str:pk>/", views.room_update, name="room-update"),
-    path("room-delete/<str:pk>/", views.room_delete, name="room-delete"),
+    path("api/rooms", views.RoomList.as_view()),
+    path("api/rooms/<int:pk>", views.RoomDetail.as_view()),
+    path("api/add-service", views.AdditionalServiceList.as_view()),
+    path("api/add-service/<int:pk>", views.AdditonalServiceDetail.as_view()),
+    path("api/orders", views.OrderList.as_view()),
+    path("api/orders/<int:pk>", views.OrderDetail.as_view()),
+    path("api/reservations", views.ReservationList.as_view()),
+    path("api/reservations/<int:pk>", views.ReservationDetail.as_view()),
 ]

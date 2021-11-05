@@ -9,27 +9,45 @@ class Migration(migrations.Migration):
 
     dependencies = [
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),
-        ('service', '0001_initial'),
+        ("service", "0001_initial"),
     ]
 
     operations = [
         migrations.RemoveField(
-            model_name='room',
-            name='reservation',
+            model_name="room",
+            name="reservation",
         ),
         migrations.AddField(
-            model_name='reservation',
-            name='room',
-            field=models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, to='service.room'),
+            model_name="reservation",
+            name="room",
+            field=models.ForeignKey(
+                blank=True,
+                null=True,
+                on_delete=django.db.models.deletion.SET_NULL,
+                to="service.room",
+            ),
         ),
         migrations.AlterField(
-            model_name='reservation',
-            name='client',
-            field=models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, to=settings.AUTH_USER_MODEL),
+            model_name="reservation",
+            name="client",
+            field=models.ForeignKey(
+                blank=True,
+                null=True,
+                on_delete=django.db.models.deletion.SET_NULL,
+                to=settings.AUTH_USER_MODEL,
+            ),
         ),
         migrations.AlterField(
-            model_name='room',
-            name='standard',
-            field=models.CharField(choices=[('podstawowy', 'podstawowy'), ('sredni', 'sredni'), ('wyzszy', 'wyzszy')], default='podstawowy', max_length=20),
+            model_name="room",
+            name="standard",
+            field=models.CharField(
+                choices=[
+                    ("podstawowy", "podstawowy"),
+                    ("sredni", "sredni"),
+                    ("wyzszy", "wyzszy"),
+                ],
+                default="podstawowy",
+                max_length=20,
+            ),
         ),
     ]
