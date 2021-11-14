@@ -1,11 +1,12 @@
 from rest_framework.decorators import api_view
 from rest_framework import generics
 from rest_framework.response import Response
-from .serializer import RoomSerializer, AdditionalServiceSerializer, ReservationSerializer, OrderSerializer
+from .serializer import RoomSerializer, AdditionalServiceSerializer, ReservationSerializer, OrderSerializer, UserSerializer
 from django.contrib.auth.models import User
 from .models import Room, AdditionalService, Order, Reservation
 from django_filters import AllValuesFilter, DateTimeFilter, NumberFilter, FilterSet
-
+from rest_framework import viewsets
+from rest_framework import permissions
 
 @api_view(["GET"])
 def api_overview(request):
@@ -31,6 +32,7 @@ class RoomList(generics.ListCreateAPIView):
     filterset_fields = ['room_name']
     search_fields = ['room_name']
     ordering_fields = ['room_name']
+    validators=[]
 
 class RoomDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Room
@@ -57,7 +59,23 @@ class OrderDetail(generics.RetrieveUpdateDestroyAPIView):
 class ReservationList(generics.ListCreateAPIView):
     queryset = Reservation.objects.all().order_by("-id")
     serializer_class = ReservationSerializer
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
+
+    def perform_create(self, serializer):
+        serializer.save(owner=self.request.user)
+    #TODO Make a validation
 
 class ReservationDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Reservation.objects.all().order_by("-id")
     serializer_class = ReservationSerializer
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
+
+
+class UserList(generics.ListAPIView):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
+
+
+class UserDetail(generics.RetrieveAPIView):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer

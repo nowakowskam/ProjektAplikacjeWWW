@@ -13,4 +13,6 @@ urlpatterns = [
     path("api/orders/<int:pk>", views.OrderDetail.as_view()),
     path("api/reservations", views.ReservationList.as_view()),
     path("api/reservations/<int:pk>", views.ReservationDetail.as_view()),
+    path("api/user", views.UserList.as_view()),
+    path("api/user/<int:pk>", views.UserDetail.as_view()),
 ]
