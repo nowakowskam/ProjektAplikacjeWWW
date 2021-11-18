@@ -30,7 +30,7 @@ class Room(models.Model):
 class Reservation(models.Model):
     """Reservation model."""
 
-    client = models.ForeignKey(User, on_delete=models.SET_NULl, null=True, blank=True)
+    client = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True)
     date_from = models.DateField()
     date_to = models.DateField()
     price = models.DecimalField(max_digits=10, decimal_places=2)
