@@ -4,43 +4,31 @@ from rest_framework.response import Response
 from .serializer import RoomSerializer, AdditionalServiceSerializer, ReservationSerializer, OrderSerializer, UserSerializer
 from django.contrib.auth.models import User
 from .models import Room, AdditionalService, Order, Reservation
-from django_filters import AllValuesFilter, DateTimeFilter, NumberFilter, FilterSet
+#from django_filters import AllValuesFilter, DateTimeFilter, NumberFilter, FilterSet
 from rest_framework import viewsets
 from rest_framework import permissions
 
 
-
-class RoomList(generics.ListCreateAPIView):
-    queryset = Room.objects.all().order_by("-id")
+class RoomViewSet(viewsets.ModelViewSet):
+    queryset = Room.objects.all()
     serializer_class = RoomSerializer
-    filterset_fields = ['room_name']
-    search_fields = ['room_name']
-    ordering_fields = ['room_name']
-    validators=[]
+    # filterset_fields = ['room_name']
+    # search_fields = ['room_name']
+    # ordering_fields = ['room_name']
 
-class RoomDetail(generics.RetrieveUpdateDestroyAPIView):
-    queryset = Room
-    serializer_class = RoomSerializer
 
-class AdditionalServiceList(generics.ListCreateAPIView):
+class AdditionalServiceViewSet(viewsets.ModelViewSet):
     queryset = AdditionalService.objects.all().order_by("-id")
     serializer_class = AdditionalServiceSerializer
-    filterset_fields = ['service_name']
+    #filterset_fields = ['service_name']
 
-class AdditonalServiceDetail(generics.RetrieveUpdateDestroyAPIView):
-    queryset = AdditionalService
-    serializer_class = AdditionalServiceSerializer
 
-class OrderList(generics.ListCreateAPIView):
+class OrderViewSets(viewsets.ModelViewSet):
     queryset = Order.objects.all().order_by("-id")
     serializer_class = OrderSerializer
 
 
-class OrderDetail(generics.RetrieveUpdateDestroyAPIView):
-    queryset = Order
-    serializer_class = OrderSerializer
-
-class ReservationList(generics.ListCreateAPIView):
+class ReservationViewSets(viewsets.ModelViewSet):
     queryset = Reservation.objects.all().order_by("-id")
     serializer_class = ReservationSerializer
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
@@ -49,17 +37,10 @@ class ReservationList(generics.ListCreateAPIView):
         serializer.save(owner=self.request.user)
     #TODO Make a validation
 
-class ReservationDetail(generics.RetrieveUpdateDestroyAPIView):
-    queryset = Reservation.objects.all().order_by("-id")
-    serializer_class = ReservationSerializer
-    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
 
 
-class UserList(generics.ListAPIView):
+class UserViewSets(viewsets.ModelViewSet):
     queryset = User.objects.all()
     serializer_class = UserSerializer
 
 
-class UserDetail(generics.RetrieveAPIView):
-    queryset = User.objects.all()
-    serializer_class = UserSerializer

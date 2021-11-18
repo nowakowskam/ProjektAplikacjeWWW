@@ -47,8 +47,7 @@ class AdditionalService(models.Model):
     description = models.CharField(max_length=255, blank=True)
     service_name = models.CharField(max_length=20)
 
-    def __str__(self):
-        return self.room_name
+
 
     class Meta:
         verbose_name = "Dodatkowa usluga"

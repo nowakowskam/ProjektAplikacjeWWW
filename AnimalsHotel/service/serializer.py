@@ -9,26 +9,26 @@ from datetime import date
 class RoomSerializer(serializers.ModelSerializer):
     class Meta:
         model = Room
-        fields = ['pk','standard', 'price', 'room_name', 'description']
+        fields = ['url','standard', 'price', 'room_name', 'description']
 
 class AdditionalServiceSerializer(serializers.ModelSerializer):
     class Meta:
-        model=Order
-        fields=['pk', 'service_name', 'description']
+        model=AdditionalService
+        fields=['url', 'service_name', 'description']
 
 
 class OrderSerializer(serializers.ModelSerializer):
     add_service=serializers.PrimaryKeyRelatedField(queryset=AdditionalService.objects.all())
     client= serializers.SerializerMethodField('_user')
 
-    def client(self, obj):
+    def _user(self, obj):
         request = self.context.get('request', None)
         if request:
             return request.user
 
     class Meta:
         model = Order
-        fields=['pk', 'add_service', 'client', 'total_price']
+        fields=['url', 'add_service', 'client', 'total_price']
 
 class ReservationSerializer(serializers.ModelSerializer):
     owner = serializers.ReadOnlyField(source='owner.username')
@@ -37,7 +37,7 @@ class ReservationSerializer(serializers.ModelSerializer):
 
     class Meta:
         model=Reservation
-        fields=['owner', 'date_from', 'date_to', 'price','room', 'user']
+        fields=['owner', 'date_from', 'date_to', 'price','room', 'user', 'url']
 
     def validate_date(self):
         if self.date_from > self.date_to:
@@ -52,4 +52,4 @@ class UserSerializer(serializers.ModelSerializer):
     # reservation=serializers.PrimaryKeyRelatedField(many=True, queryset=Reservation.objects.all())
     class Meta:
         model = User
-        fields = ['id', 'username']
+        fields = ['id', 'username', 'url']
