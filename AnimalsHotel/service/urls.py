@@ -1,18 +1,22 @@
-from django.urls import path
+from django.urls import path, include
 from django.contrib.auth.decorators import login_required
-
+from rest_framework import routers
 from . import views
 
+router = routers.SimpleRouter()
+
+
+router.register(r'rooms', views.RoomList)
+router.register(r'room/<int:pk>', views.RoomDetail)
+router.register(r'add-service', views.AdditionalServiceList)
+router.register(r'add-service/<int:pk>', views.AdditionalService)
+router.register(r'orders', views.OrderList)
+router.register(r'orders/<int:pk>',views.OrderDetail)
+router.register(r'reservations', views.ReservationList)
+router.register(r'reservations/<int:pk>', views.ReservationDetail)
+router.register(r'user', views.UserList)
+router.register(r'user/<int:pk>',views.UserDetail)
+
 urlpatterns = [
-    path("", views.api_overview, name="api-overview"),
-    path("api/rooms", views.RoomList.as_view()),
-    path("api/rooms/<int:pk>", views.RoomDetail.as_view()),
-    path("api/add-service", views.AdditionalServiceList.as_view()),
-    path("api/add-service/<int:pk>", views.AdditonalServiceDetail.as_view()),
-    path("api/orders", views.OrderList.as_view()),
-    path("api/orders/<int:pk>", views.OrderDetail.as_view()),
-    path("api/reservations", views.ReservationList.as_view()),
-    path("api/reservations/<int:pk>", views.ReservationDetail.as_view()),
-    path("api/user", views.UserList.as_view()),
-    path("api/user/<int:pk>", views.UserDetail.as_view()),
+    path('', include(router.urls)),
 ]

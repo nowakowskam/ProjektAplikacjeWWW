@@ -8,22 +8,6 @@ from django_filters import AllValuesFilter, DateTimeFilter, NumberFilter, Filter
 from rest_framework import viewsets
 from rest_framework import permissions
 
-@api_view(["GET"])
-def api_overview(request):
-    api_urls = {
-        "List": "/room-list/",
-        "Detail View": "/room-detail/<str:pk>/",
-        "Create": "/room-create/",
-        "Update": "/room-update/<str:pk>/",
-        "Delete": "/room-delete/<str:pk>/",
-        "List": "/order-list/",
-        "Detail View": "/order-detail/<str:pk>/",
-        "Create": "/order-create/",
-        "Update": "/order-update/<str:pk>/",
-        "Delete": "/order-delete/<str:pk>/",
-    }
-
-    return Response(api_urls)
 
 
 class RoomList(generics.ListCreateAPIView):
