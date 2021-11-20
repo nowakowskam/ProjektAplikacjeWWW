@@ -1,13 +1,16 @@
-from django.urls import path
+from django.urls import path, include
 from django.contrib.auth.decorators import login_required
-
+from rest_framework import routers
 from . import views
 
+router = routers.DefaultRouter()
+
+
+router.register(r'rooms', views.RoomViewSet)
+router.register(r'add-service', views.AdditionalServiceViewSet)
+router.register(r'orders', views.OrderViewSets)
+router.register(r'reservations', views.ReservationViewSets)
+router.register(r'user', views.UserViewSets)
 urlpatterns = [
-    path("", views.api_overview, name="api-overview"),
-    path("room-list/", views.room_list, name="room-list"),
-    path("room-detail/<str:pk>/", views.room_detail, name="room-detail"),
-    path("room-create/", views.room_create, name="room-create"),
-    path("room-update/<str:pk>/", views.room_update, name="room-update"),
-    path("room-delete/<str:pk>/", views.room_delete, name="room-delete"),
+    path('', include(router.urls)),
 ]
