@@ -5,6 +5,7 @@ from .serializer import RoomSerializer, AdditionalServiceSerializer, Reservation
 from django.contrib.auth.models import User
 from .models import Room, AdditionalService, Order, Reservation
 #from django_filters import AllValuesFilter, DateTimeFilter, NumberFilter, FilterSet
+from rest_framework.permissions import IsAdminUser, DjangoModelPermissionsOrAnonReadOnly
 from rest_framework import viewsets
 from rest_framework import permissions
 
@@ -12,6 +13,7 @@ from rest_framework import permissions
 class RoomViewSet(viewsets.ModelViewSet):
     queryset = Room.objects.all()
     serializer_class = RoomSerializer
+
     # filterset_fields = ['room_name']
     # search_fields = ['room_name']
     # ordering_fields = ['room_name']
