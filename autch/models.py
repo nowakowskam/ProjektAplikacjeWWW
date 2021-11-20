@@ -30,3 +30,7 @@ class Address(models.Model):
     city = models.CharField(max_length=100)
     postal_code = models.CharField(max_length=20)
     client = models.ForeignKey(Client, on_delete=models.SET_NULL, null=True)
+
+class Employee(models.Model):
+    account = models.ForeignKey(AccountsUser, on_delete=models.PROTECT)
+
