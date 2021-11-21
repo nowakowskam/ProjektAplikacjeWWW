@@ -25,23 +25,21 @@ class OrderSerializer(serializers.ModelSerializer):
 
 class ReservationSerializer(serializers.ModelSerializer):
 
-    # room=serializers.PrimaryKeyRelatedField(queryset=Room.objects.all())
-    # user = serializers.PrimaryKeyRelatedField(many=True, queryset=User.get_email_field_name())
-
     class Meta:
         model=Reservation
         fields=['client', 'date_from', 'date_to', 'price','room', 'url']
         read_only_fields=("client",)
 
-    # def validate_date(self):
-    #     if self.date_from > self.date_to:
-    #         raise serializers.ValidationError("End date must be after start date.")
-    #     if self.date_from >date.today():
-    #         raise  serializers.ValidationError("The first date you can take is for today")
+
+    def validate(self, data):
+        if data['date_from'] > data['date_to']:
+            raise serializers.ValidationError("Finish must occur after start")
+        return data
  #TODO correct validation
 
 
 class UserSerializer(serializers.ModelSerializer):
+
     class Meta:
         model = User
         fields = ['id', 'username', 'url']

@@ -3,7 +3,12 @@
   <component name="ChangeListManager">
     <list default="true" id="ae0cc017-66a3-4591-941f-d47309b6df47" name="Changes" comment="fixes to runserver again">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AnimalsHotel/AnimalsHotel/settings_local.py" beforeDir="false" afterPath="$PROJECT_DIR$/AnimalsHotel/AnimalsHotel/settings_local.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AnimalsHotel/AnimalsHotel/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/AnimalsHotel/AnimalsHotel/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AnimalsHotel/AnimalsHotel/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/AnimalsHotel/AnimalsHotel/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AnimalsHotel/authenication/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/AnimalsHotel/authenication/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AnimalsHotel/authenication/roles.py" beforeDir="false" afterPath="$PROJECT_DIR$/AnimalsHotel/service/decorator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AnimalsHotel/service/serializer.py" beforeDir="false" afterPath="$PROJECT_DIR$/AnimalsHotel/service/serializer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AnimalsHotel/service/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/AnimalsHotel/service/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -224,7 +229,14 @@
       <option name="project" value="LOCAL" />
       <updated>1637507677844</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="fixes to runserver again">
+      <created>1637509984744</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1637509984744</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">

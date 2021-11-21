@@ -4,53 +4,43 @@ from rest_framework.response import Response
 from .serializer import RoomSerializer, AdditionalServiceSerializer, ReservationSerializer, OrderSerializer, UserSerializer
 from django.contrib.auth.models import User
 from .models import Room, AdditionalService, Order, Reservation
-#from django_filters import AllValuesFilter, DateTimeFilter, NumberFilter, FilterSet
-from rest_framework.permissions import DjangoModelPermissions, BasePermission, IsAdminUser
-from rest_framework import viewsets
-from rest_framework import permissions
+from rest_framework.permissions import IsAuthenticated, IsAdminUser
+from rest_framework import viewsets, permissions, filters
 
-# class RoomWritePermission(BasePermission):
-#     message = 'Adding and edditing rooms is restricted to the admin only.'
-#     def has_object_permission(self, request, view, obj):
-#
-#         if request.method in SAFE_METHODS:
-#             return True
-#         return obj.
 
 
 class RoomViewSet(viewsets.ModelViewSet):
-    # permission_classes = DjangoModelPermissions
+    permission_classes = [IsAuthenticated]
     queryset = Room.objects.all()
     serializer_class = RoomSerializer
-
+    #
     # filterset_fields = ['room_name']
     # search_fields = ['room_name']
     # ordering_fields = ['room_name']
 
 
 class AdditionalServiceViewSet(viewsets.ModelViewSet):
+    permission_classes = [IsAuthenticated]
     queryset = AdditionalService.objects.all().order_by("-id")
     serializer_class = AdditionalServiceSerializer
     #filterset_fields = ['service_name']
 
 
 class OrderViewSets(viewsets.ModelViewSet):
+    permission_classes = [IsAuthenticated]
     queryset = Order.objects.all().order_by("-id")
     serializer_class = OrderSerializer
 
 
 class ReservationViewSets(viewsets.ModelViewSet):
+    permission_classes = [IsAuthenticated]
     queryset = Reservation.objects.all().order_by("-id")
     serializer_class = ReservationSerializer
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
 
-    def perform_create(self, serializer):
-        serializer.save(owner=self.request.user)
-    #TODO Make a validation
 
-
-
-class UserViewSets(viewsets.ModelViewSet):
+class UserViewSets(viewsets.ReadOnlyModelViewSet):
+    permission_classes = [IsAdminUser]
     queryset = User.objects.all()
     serializer_class = UserSerializer
 
