@@ -19,7 +19,7 @@ from rest_framework import permissions
 
 
 class RoomViewSet(viewsets.ModelViewSet):
-    permission_classes = DjangoModelPermissions
+    # permission_classes = DjangoModelPermissions
     queryset = Room.objects.all()
     serializer_class = RoomSerializer
 
