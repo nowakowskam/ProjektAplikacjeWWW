@@ -2,7 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ae0cc017-66a3-4591-941f-d47309b6df47" name="Changes" comment="set Permission class IsAuthenticated or read only">
-      <change beforePath="$PROJECT_DIR$/.idea/ProjektAplikacjeWWW.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/ProjektAplikacjeWWW.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AnimalsHotel/AnimalsHotel/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/AnimalsHotel/AnimalsHotel/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AnimalsHotel/AnimalsHotel/settings_local.py" beforeDir="false" afterPath="$PROJECT_DIR$/AnimalsHotel/AnimalsHotel/settings_local.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AnimalsHotel/service/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/AnimalsHotel/service/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/autch/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/AnimalsHotel/authenication/roles.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/autch/admin.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/autch/apps.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/autch/migrations/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/autch/models.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/autch/tests.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/autch/views.py" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,6 +55,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>

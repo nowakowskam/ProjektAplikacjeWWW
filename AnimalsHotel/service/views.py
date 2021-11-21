@@ -5,12 +5,21 @@ from .serializer import RoomSerializer, AdditionalServiceSerializer, Reservation
 from django.contrib.auth.models import User
 from .models import Room, AdditionalService, Order, Reservation
 #from django_filters import AllValuesFilter, DateTimeFilter, NumberFilter, FilterSet
-from rest_framework.permissions import IsAdminUser, DjangoModelPermissionsOrAnonReadOnly
+from rest_framework.permissions import DjangoModelPermissions, BasePermission, IsAdminUser
 from rest_framework import viewsets
 from rest_framework import permissions
 
+# class RoomWritePermission(BasePermission):
+#     message = 'Adding and edditing rooms is restricted to the admin only.'
+#     def has_object_permission(self, request, view, obj):
+#
+#         if request.method in SAFE_METHODS:
+#             return True
+#         return obj.
+
 
 class RoomViewSet(viewsets.ModelViewSet):
+    permission_classes = DjangoModelPermissions
     queryset = Room.objects.all()
     serializer_class = RoomSerializer
 
