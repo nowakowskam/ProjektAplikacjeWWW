@@ -27,7 +27,7 @@ class ReservationSerializer(serializers.ModelSerializer):
 
     class Meta:
         model=Reservation
-        fields=['client', 'date_from', 'date_to', 'price','room', 'url']
+        fields=['client', 'date_from', 'date_to', 'price','room', 'url', 'total_price']
         read_only_fields=("client",)
 
 
