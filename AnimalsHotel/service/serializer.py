@@ -21,7 +21,7 @@ class OrderSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Order
-        fields=['url', 'add_service', 'client', 'total_price']
+        fields=['url', 'add_service', 'client']
 
 class ReservationSerializer(serializers.ModelSerializer):
 
