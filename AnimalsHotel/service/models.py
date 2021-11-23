@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.db import models
 from datetime import timedelta
+from django.core.validators import MinValueValidator
 
 
 class Room(models.Model):
@@ -24,7 +25,7 @@ class Room(models.Model):
         verbose_name_plural = "Pokoje"
 
     def __str__(self):
-        return self.room_name
+        return f'{self.room_name}, {self.price}'
 
 
 class Reservation(models.Model):
