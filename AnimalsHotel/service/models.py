@@ -1,7 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.db import models
-
+from datetime import timedelta
 
 
 class Room(models.Model):
@@ -33,8 +33,12 @@ class Reservation(models.Model):
     client = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True)
     date_from = models.DateField()
     date_to = models.DateField()
-    price = models.DecimalField(max_digits=10, decimal_places=2)
     room = models.ForeignKey(Room, on_delete=models.SET_NULL, null=True, blank=True)
+
+    # def calculate_price_for_days(self, start, end):
+    #     start=self.date_from
+    #     end=self.date_to
+    #     return (start - end) * room.price()
 
     class Meta:
         verbose_name = "Rezerwacja"
@@ -43,7 +47,6 @@ class Reservation(models.Model):
 
 class AdditionalService(models.Model):
     """AdditionalService model model."""
-
     description = models.CharField(max_length=255, blank=True)
     service_name = models.CharField(max_length=20)
 
