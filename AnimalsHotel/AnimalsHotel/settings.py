@@ -40,14 +40,15 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "service",
     "rest_framework",
-    "authenication",
+    "rest_framework.authtoken",
+    'auth',
+    'auth.User'
 ]
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
-    "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
@@ -120,8 +121,10 @@ STATIC_URL = "/static/"
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 REST_FRAMEWORK = {
+
     'DEFAULT_PERMISSION_CLASSES': [
         'rest_framework.permissions.IsAuthenticated',
+
     ]
 }
 REST_FRAMEWORK = {
@@ -132,6 +135,9 @@ REST_FRAMEWORK = {
         "rest_framework.filters.OrderingFilter",
     ],
 }
+
+AUTH_USER_MODEL='auth.User'
+
 
 try:
     # Local

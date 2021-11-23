@@ -47,7 +47,6 @@ class Reservation(models.Model):
 
 class AdditionalService(models.Model):
     """AdditionalService model model."""
-    price = models.DecimalField(max_digits=10, decimal_places=2)
     description = models.CharField(max_length=255, blank=True)
     service_name = models.CharField(max_length=20)
 
