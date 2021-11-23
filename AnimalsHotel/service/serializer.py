@@ -35,7 +35,7 @@ class ReservationSerializer(serializers.ModelSerializer):
         if data['date_from'] > data['date_to']:
             raise serializers.ValidationError("Finish must occur after start")
         return data
- #TODO correct validation
+
 
 
 class UserSerializer(serializers.ModelSerializer):
