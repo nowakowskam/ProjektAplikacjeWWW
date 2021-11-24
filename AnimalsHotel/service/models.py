@@ -49,6 +49,7 @@ class AdditionalService(models.Model):
     """AdditionalService model model."""
     description = models.CharField(max_length=255, blank=True)
     service_name = models.CharField(max_length=20)
+    price = models.DecimalField(max_digits=10, decimal_places=2)
 
     class Meta:
         verbose_name = "Dodatkowa usluga"

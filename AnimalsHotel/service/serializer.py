@@ -22,7 +22,7 @@ class RoomSerializer(serializers.ModelSerializer):
 class AdditionalServiceSerializer(serializers.ModelSerializer):
     class Meta:
         model=AdditionalService
-        fields=['url', 'service_name', 'description']
+        fields=['url', 'service_name', 'description', 'price']
 
 class OrderSerializer(serializers.ModelSerializer):
 
