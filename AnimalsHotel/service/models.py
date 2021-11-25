@@ -24,7 +24,7 @@ class Room(models.Model):
         verbose_name_plural = "Pokoje"
 
     def __str__(self):
-        return f'{self.room_name}, {self.price}'
+        return f"{self.room_name}, {self.price}"
 
 
 class Reservation(models.Model):
@@ -47,6 +47,7 @@ class Reservation(models.Model):
 
 class AdditionalService(models.Model):
     """AdditionalService model model."""
+
     description = models.CharField(max_length=255, blank=True)
     service_name = models.CharField(max_length=20)
     price = models.DecimalField(max_digits=10, decimal_places=2)

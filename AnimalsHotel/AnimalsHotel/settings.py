@@ -41,8 +41,8 @@ INSTALLED_APPS = [
     "service",
     "rest_framework",
     "rest_framework.authtoken",
-    'auth',
-    'auth.User'
+    "auth",
+    "auth.User",
 ]
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
@@ -121,10 +121,8 @@ STATIC_URL = "/static/"
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 REST_FRAMEWORK = {
-
-    'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.IsAuthenticated',
-
+    "DEFAULT_PERMISSION_CLASSES": [
+        "rest_framework.permissions.IsAuthenticated",
     ]
 }
 REST_FRAMEWORK = {
@@ -136,7 +134,7 @@ REST_FRAMEWORK = {
     ],
 }
 
-AUTH_USER_MODEL='auth.User'
+AUTH_USER_MODEL = "auth.User"
 
 
 try:
