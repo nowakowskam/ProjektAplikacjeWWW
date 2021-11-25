@@ -35,7 +35,7 @@ class ReservationSerializer(serializers.ModelSerializer):
     class Meta:
         model=Reservation
         fields=['client', 'date_from', 'date_to', 'room', 'url']
-        read_only_fields=("client",)
+        # read_only_fields=("client",)
 
     def validate(self, data):
         if timeConverter(str(data['date_from'])) > timeConverter(str(data['date_to'])):
